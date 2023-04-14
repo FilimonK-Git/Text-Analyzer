@@ -1,0 +1,19 @@
+{
+  "name": "text-analyzer",
+  "version": "1.0.0",
+  "description": "an app that analyzes input text and counts frequency of letters",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FilimonK-Git/Text-Analyzer.git"
+  },
+  "author": "FKiros",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FilimonK-Git/Text-Analyzer/issues"
+  },
+  "homepage": "https://github.com/FilimonK-Git/Text-Analyzer#readme"
+}
