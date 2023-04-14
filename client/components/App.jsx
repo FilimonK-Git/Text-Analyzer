@@ -5,6 +5,8 @@ import Table from "./Table.jsx";
 const App = () => {
   const [words, setWords] = useState("");
   const [letterCount, setLetterCount] = useState("");
+  const [sortedAlpha, setSortedByAlpha] = useState("");
+  const [sortedFreq, setSortedByFreq] = useState("");
 
   const processor = (inputString) => {
     // edge case: what if input is empty or contains non-english-letters, lower case? symbols: space new line...
@@ -18,7 +20,6 @@ const App = () => {
     let filteredLetters = inputString
       .toLowerCase()
       .split("")
-      .sort() // sort letters alphabetically
       .filter((char) => /[a-z]/.test(char)); // remove non alphabet chars
 
     let frequencyDictonary = {};
@@ -29,14 +30,30 @@ const App = () => {
         : frequencyDictonary[char]++;
     });
 
-    // convert from key:val object to nested array: ex: {a:1, e:3} to [[a,1], [e,3]]
-    frequencyDictonary = Object.entries(frequencyDictonary);
+    // convert from key:val object to nested array and sort by descending frequency: ex: {a:1, e:3} to [[e,3], [a,1]]
+    frequencyDictonary = Object.entries(frequencyDictonary).sort(
+      (a, b) => b[1] - a[1]
+    );
+
     setLetterCount(frequencyDictonary);
   };
 
+  const sortByAlpha = () => {
+    setSortedByAlpha(letterCount.sort());
+    setSortedByFreq("");
+  };
+  const sortByFreq = () => {
+    setSortedByFreq(letterCount.sort((a, b) => b[1] - a[1]));
+    setSortedByAlpha("");
+  };
+
+  useEffect(() => {
+    // console.log("xxx", s);
+  }, [letterCount, sortedAlpha, sortedFreq]);
+
   return (
     <div>
-      <div> What would you like analyzed?</div>
+      <div> Enter text to process:</div>
       <textarea
         rows="10"
         cols="25"
@@ -44,14 +61,22 @@ const App = () => {
           setWords(e.target.value);
         }}
       ></textarea>
-      <button
-        onClick={() => {
-          processor(words);
-        }}
-      >
-        process
-      </button>
-      {letterCount ? <Table tableData={letterCount} /> : null}
+      <div>
+        <button
+          onClick={() => {
+            processor(words);
+          }}
+        >
+          process
+        </button>
+      </div>
+      {letterCount ? (
+        <Table
+          tableData={letterCount}
+          sortByAlpha={sortByAlpha}
+          sortByFreq={sortByFreq}
+        />
+      ) : null}
     </div>
   );
 };

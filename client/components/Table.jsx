@@ -1,16 +1,28 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
-export default function Table(freqDictionay) {
+export default function Table(prop) {
   return (
-    <table>
+    <table className="sortable">
       <thead>
         <tr>
-          <th>Letter</th>
-          <th>Frequency</th>
+          <th
+            onClick={() => {
+              prop.sortByAlpha();
+            }}
+          >
+            Letter
+          </th>
+          <th
+            onClick={() => {
+              prop.sortByFreq();
+            }}
+          >
+            Frequency
+          </th>
         </tr>
       </thead>
       <tbody>
-        {freqDictionay.tableData.map((letterFreq, index) => (
+        {prop.tableData.map((letterFreq, index) => (
           <tr key={index}>
             <td>{letterFreq[0]}</td>
             <td>{letterFreq[1]}</td>
