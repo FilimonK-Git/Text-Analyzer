@@ -64,4 +64,38 @@ hr {
   margin: 0;
 }
 
+.btnsDiv{
+  display: flex;
+  padding-top: 7px;
+}
 
+.analyzeBTN{
+  flex: 1;
+  margin-right: 10px;
+  margin-left: 30px;
+  border-radius: 10px;
+  padding: 5px 5px;
+  background-color: rgb(185, 235, 185);
+  cursor: pointer;
+}
+
+.generateBTN{
+  flex: 1;
+  margin-right: 30px;
+  margin-left: 10px;
+  border-radius: 10px;
+  padding: 5px 5px;
+  background-color: rgb(185, 235, 185);
+  cursor: pointer;
+}
+table {
+  border-spacing: 13px 0;
+}
+
+th, td {
+  padding: 1px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+tr:hover {background-color: rgb(185, 235, 185);;}

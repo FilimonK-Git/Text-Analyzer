@@ -6,6 +6,7 @@ export default function Table(prop) {
       <thead>
         <tr>
           <th
+            style={{ cursor: "pointer", backgroundColor: "rgb(238, 243, 240)" }}
             onClick={() => {
               prop.sortByAlpha();
             }}
@@ -13,6 +14,7 @@ export default function Table(prop) {
             Letter
           </th>
           <th
+            style={{ cursor: "pointer", backgroundColor: "rgb(238, 243, 240)" }}
             onClick={() => {
               prop.sortByFreq();
             }}
